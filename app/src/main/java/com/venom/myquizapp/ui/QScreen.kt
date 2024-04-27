@@ -39,7 +39,7 @@ import com.venom.myquizapp.ScoreActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QuestionScreen(viewmodel: QuestionScreenViewmodel) {
+fun QuestionScreen(viewmodel: QuestionScreenViewmodel,name:String?) {
     val context = LocalContext.current
     fun Context.findActivity(): ComponentActivity? = when (this) {
         is ComponentActivity -> this
@@ -154,9 +154,10 @@ fun QuestionScreen(viewmodel: QuestionScreenViewmodel) {
         Button(
             onClick = {
                 viewmodel.updateQuestion()
-                if(viewmodel.currentPosition.intValue > viewmodel.questionListSize){
+                if (viewmodel.currentPosition.intValue > viewmodel.questionListSize) {
                     val intent = Intent(context, ScoreActivity::class.java)
                     intent.putExtra("score", viewmodel.score)
+                    intent.putExtra("name", name)
                     ContextCompat.startActivity(context, intent, null)
                     context.findActivity()?.finish()
                 }

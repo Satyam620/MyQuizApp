@@ -119,6 +119,7 @@ fun HomeScreen() {
                             Toast.makeText(context, "Please Enter Name", Toast.LENGTH_LONG).show()
                         } else {
                             val intent = Intent(context, QuizQuestionsActivity::class.java)
+                                intent.putExtra("name", name.value)
                             startActivity(context, intent,null)
                             context.findActivity()?.finish()
                         }

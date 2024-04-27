@@ -20,10 +20,10 @@ class QuizQuestionsActivity : ComponentActivity() {
                 color = Color.Transparent,
                 darkIcons = false
             )
-
+            val name= intent.getStringExtra("name")
             val viewmodel = QuestionScreenViewmodel()
             MyQuizAppTheme {
-                QuestionScreen(viewmodel)
+                QuestionScreen(viewmodel,name)
             }
         }
     }
